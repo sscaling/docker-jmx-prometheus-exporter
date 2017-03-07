@@ -8,5 +8,5 @@ if [ -z "$JVM_OPTS" ]; then
   JVM_OPTS="-Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=5555"
 fi
 
-java $JVM_OPTS -jar /opt/jmx_exporter/jmx_prometheus_httpserver-0.7-jar-with-dependencies.jar $SERVICE_PORT /opt/jmx_exporter/config.yml
+java $JVM_OPTS -jar /opt/jmx_exporter/jmx_prometheus_httpserver-0.8-jar-with-dependencies.jar $SERVICE_PORT /opt/jmx_exporter/config.yml
 
