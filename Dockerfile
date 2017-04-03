@@ -3,7 +3,7 @@ MAINTAINER sscaling <sscaling@users.noreply.github.com>
 
 RUN apk update && apk upgrade && apk --update add curl && rm -rf /tmp/* /var/cache/apk/*
 
-ENV VERSION 0.8
+ENV VERSION 0.9
 ENV JAR jmx_prometheus_httpserver-$VERSION-jar-with-dependencies.jar
 
 RUN curl --insecure -L https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 -o usr/local/bin/dumb-init && chmod +x /usr/local/bin/dumb-init
