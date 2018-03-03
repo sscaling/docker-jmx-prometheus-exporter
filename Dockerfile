@@ -6,7 +6,7 @@ RUN apk update && apk upgrade && apk --update add curl && rm -rf /tmp/* /var/cac
 ENV VERSION 0.3.0
 ENV JAR jmx_prometheus_httpserver-$VERSION-jar-with-dependencies.jar
 
-RUN curl --insecure -L https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 -o usr/local/bin/dumb-init && chmod +x /usr/local/bin/dumb-init
+RUN curl --insecure -L https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 -o usr/local/bin/dumb-init && chmod +x /usr/local/bin/dumb-init
 
 RUN mkdir -p /opt/jmx_exporter
 RUN curl -L https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_httpserver/$VERSION/$JAR -o /opt/jmx_exporter/$JAR
