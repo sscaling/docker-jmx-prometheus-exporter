@@ -36,6 +36,7 @@ Additionally, the following environment variables can be defined
 
 -	SERVICE_PORT - what port to run the service (if you don't like 5556)
 -	JVM_OPTS - any additional options, Xmx etc.
+-   CONFIG_YML - override the location of config.yaml (default: /opt/jmx_exporter/config.yml which monitors jmx exporter's jvm)
 
 Using with Prometheus
 ---------------------
