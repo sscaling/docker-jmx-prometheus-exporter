@@ -7,14 +7,14 @@ Building docker image
 ---------------------
 
 ```
-docker build -t sscaling/jmx-exporter .
+docker build -t sscaling/jmx-prometheus-exporter .
 ```
 
 Running
 -------
-
+docker pull sscaling/jmx-prometheus-exporter
 ```
-docker run --rm -p "5556:5556" sscaling/jmx-exporter
+docker run --rm -p "5556:5556" sscaling/jmx-prometheus-exporter
 ```
 
 Then you can visit the metrics endpoint: [http://127.0.0.1:5556/metrics](http://127.0.0.1:5556/metrics) (assuming docker is running on localhost)
@@ -22,10 +22,10 @@ Then you can visit the metrics endpoint: [http://127.0.0.1:5556/metrics](http://
 Configuration
 -------------
 
-By default, the jmx-exporter is configure to monitor it's own metrics (as per the main repo example). However, to provide your own configuration, mount the YAML file as a volume
+By default, the jmx-prometheus-exporter is configure to monitor it's own metrics (as per the main repo example). However, to provide your own configuration, mount the YAML file as a volume
 
 ```
-docker run --rm -p "5556:5556" -v "$PWD/config.yml:/opt/jmx_exporter/config.yml" sscaling/jmx-exporter
+docker run --rm -p "5556:5556" -v "$PWD/config.yml:/opt/jmx_exporter/config.yml" sscaling/jmx-prometheus-exporter
 ```
 
 The configuration options are documented: [https://github.com/prometheus/jmx_exporter](https://github.com/prometheus/jmx_exporter)
