@@ -13,6 +13,12 @@ before_script:
 
 script:
   - sleep 5
-  - cd test
-  - docker-compose run query | grep 'jmx_scrape_error 0.0'
+  - docker-compose -f test/docker-compose.yml run query | grep 'jmx_scrape_error 0.0'
 
+deploy:
+  - provider: script
+    script: bash docker_push "$TRAVIS_TAG"
+    on:
+      tags: true
+  - provider: script
+    script: bash docker_push latest
