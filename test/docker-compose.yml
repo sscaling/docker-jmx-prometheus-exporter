@@ -1,0 +1,14 @@
+version: '3.2'
+
+services:
+  exporter:
+    image: sscaling/jmx-prometheus-exporter
+    ports:
+      - 5556
+  query:
+    image: sscaling/jmx-prometheus-exporter
+    entrypoint:
+      - curl
+    command:
+      - -s
+      - "http://exporter:5556/metrics"
