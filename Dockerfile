@@ -1,4 +1,4 @@
-FROM anapsix/alpine-java:8
+FROM openjdk:8u212-jre-alpine
 MAINTAINER sscaling <sscaling@users.noreply.github.com>
 
 RUN apk update && apk upgrade && apk --update add curl && rm -rf /tmp/* /var/cache/apk/*
