@@ -1,6 +1,6 @@
 FROM openjdk:8-jre
 
-ARG buildversion=0.13.0
+ARG buildversion=0.14.0
 ARG buildjar=jmx_prometheus_httpserver-$buildversion-jar-with-dependencies.jar
 
 ENV version $buildversion
