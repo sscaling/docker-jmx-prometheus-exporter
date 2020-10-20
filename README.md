@@ -14,6 +14,13 @@ Building docker image
 docker build -t reasland/jmx-prometheus-exporter .
 ```
 
+### Build Arguments
+
+Additionally, the following build arguments can be defined
+
+-	version - default 0.14.0 - what version of the jmx_exporter http server to use (if you are going to docker push, please tag prom_jmx:$VERSION)
+-	jar - default jmx_prometheus_httpserver-$VERSION-jar-with-dependencies.jar - what jar file from the maven repo https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_httpserver/ to use
+
 Running
 -------
 
