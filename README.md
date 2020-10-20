@@ -1,5 +1,3 @@
-[![Build status](https://travis-ci.com/sscaling/docker-jmx-prometheus-exporter.svg?branch=master)](https://travis-ci.com/sscaling/docker-jmx-prometheus-exporter) [![Docker Pulls](https://img.shields.io/docker/pulls/sscaling/jmx-prometheus-exporter.svg)](https://hub.docker.com/r/sscaling/jmx-prometheus-exporter)
-
 Docker JMX exporter for Prometheus
 ==================================
 
