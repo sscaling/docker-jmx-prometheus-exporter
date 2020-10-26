@@ -1,16 +1,21 @@
-FROM anapsix/alpine-java:8
-MAINTAINER sscaling <sscaling@users.noreply.github.com>
+FROM openjdk:8-jre
 
-RUN apk update && apk upgrade && apk --update add curl && rm -rf /tmp/* /var/cache/apk/*
+ARG buildversion=0.14.0
+ARG buildjar=jmx_prometheus_httpserver-$buildversion-jar-with-dependencies.jar
 
-ENV VERSION 0.12.0
-ENV JAR jmx_prometheus_httpserver-$VERSION-jar-with-dependencies.jar
-
-RUN curl --insecure -L https://github.com/Yelp/dumb-init/releases/download/v1.2.2/dumb-init_1.2.2_amd64 -o usr/local/bin/dumb-init && chmod +x /usr/local/bin/dumb-init
+ENV version $buildversion
+ENV jar $buildjar
+ENV SERVICE_PORT 5556
+ENV CONFIG_YML /opt/jmx_exporter/config.yml
+ENV JVM_OPTS -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.port=5555 
 
 RUN mkdir -p /opt/jmx_exporter
-RUN curl -L https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_httpserver/$VERSION/$JAR -o /opt/jmx_exporter/$JAR
-COPY start.sh /opt/jmx_exporter/
+RUN useradd -ms /bin/bash prom_exporter
+RUN chown prom_exporter:prom_exporter /opt/jmx_exporter
+
+USER prom_exporter
+
+RUN curl -L https://repo1.maven.org/maven2/io/prometheus/jmx/jmx_prometheus_httpserver/$version/$jar -o /opt/jmx_exporter/$jar
 COPY config.yml /opt/jmx_exporter/
 
-CMD ["usr/local/bin/dumb-init", "/opt/jmx_exporter/start.sh"]
+CMD ["sh", "-c", "java $JVM_OPTS -jar /opt/jmx_exporter/$jar $SERVICE_PORT $CONFIG_YML" ]
